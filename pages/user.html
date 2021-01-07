@@ -1,0 +1,54 @@
+<div class="user_div">
+    <div class="user_nav">
+        <!-- 个人信息 -->
+        <div class="user_mine user_title">
+            <span>查看信息</span>
+        </div>
+        <!-- 同寝室 -->
+        <div class="user_dormitory user_title">
+            <span>同宿人员</span>
+        </div>
+        <!-- 校园风光 -->
+        <div class="user_scenery user_title">
+            <span>校园风光</span>
+        </div>
+    </div>
+    <div class="user_display">
+        
+    </div>
+</div>
+
+<script>
+    $(function(){
+        //加载个人信息
+        $('.user_mine').click(function(){
+            $('.user_display').load('./pages/user_pageone.html');
+        });
+
+        //加载同宿人员
+        $('.user_dormitory').click(function(){
+            $('.user_display').load('./pages/user_pagetwo.html');
+        });
+
+        //加载校园风光
+        $('.user_scenery').click(function(){
+            $('.user_display').load('./pages/user_pagethree.html');
+        });
+    })
+
+    $(function(){
+        $('.user_title').click(function(){
+            $('.user_title').css({
+                backgroundColor: '#014674',
+                color:"#fff",
+                transform: 'scale(1)'
+            })
+            $(this).css({
+                backgroundColor: 'rgb(0, 48, 87)',
+                color: '#fff',
+                transform: 'scale(0.97)'
+            });
+        })
+        $('.user_title:first').click();
+    })
+</script>

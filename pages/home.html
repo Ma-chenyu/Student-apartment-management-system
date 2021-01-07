@@ -1,0 +1,71 @@
+<div class="home_main">
+    <ul class="home_ul" id="home_ul">
+        <!-- 功能一 -->
+        <li class="home_li_one home_li">
+            <div class="home_div_one home_div">
+                <span class="home_span">学生能正常使用账号密码登录本系统</span>
+            </div>
+        </li>
+        <!-- 功能二 -->
+        <li class="home_li_two home_li">
+            <div class="home_div_two home_div"> 
+                <span class="home_span">楼管能正常使用账号密码登录本系统</span>
+            </div>
+        </li>
+        <!-- 功能三 -->
+        <li class="home_li_three home_li">
+            <div class="home_div_three home_div">
+                <span class="home_span">楼管老师可以系别、年级、班级为学生分配寝室</span>
+            </div>
+        </li>
+        <!-- 功能四 -->
+        <li class="home_li_four home_li">
+            <div class="home_div_four home_div">
+                <span class="home_span">楼管老师可以按照楼号和学号查询学生信息</span>
+            </div>
+        </li>
+        <!-- 功能五 -->
+        <li class="home_li_five home_li">
+            <div class="home_div_five home_div">
+                <span class="home_span">楼管老师对楼内财产明细进行录入，并根据相应情况进行增改。</span>
+            </div>
+        </li>
+        <!-- 功能六 -->
+        <li class="home_li_six home_li">
+            <div class="home_div_six home_div">
+                <span class="home_span">学生登陆本系统后可以查看个人信息</span>
+            </div>
+        </li>
+        <!-- 功能七 -->
+        <li class="home_li_seven home_li">
+            <div class="home_div_seven home_div">
+                <span class="home_span">学生可以查看本宿舍的人员</span>
+            </div>
+        </li>
+        <!-- 功能八 -->
+        <li class="home_li_eight home_li">
+            <div class="home_div_eight home_div">
+                <span class="home_span">学生可以查看校园风光</span>
+            </div>
+        </li>
+    </ul>
+
+</div>
+
+<script>
+    // 主界面依次添加动画
+    $(function(){
+        // 获取长度
+        let home_li = $('.home_li');
+        // console.log(home_li.length);
+        $.each(home_li,function(i){
+            let that = $(this);
+            setTimeout(function(){
+                // that.css('backgroundColor','#000')
+                that.addClass('up')
+            },120*i)
+        })
+    })
+
+
+</script>

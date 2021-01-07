@@ -1,0 +1,58 @@
+<div class="system_div">
+    <!-- 注册、登录切换 -->
+    <div class="system_change">
+        <!-- 登录 -->
+        <div class="log" id="log">
+            <span>登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</span>
+        </div>
+        <!-- 竖线 -->
+        <div class="line"></div>
+        <!-- 注册 -->
+        <div class="register" id="register">
+            <span>注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</span>
+        </div>
+    </div>
+    <!-- 表单 -->
+    <form action="" class="system_submit" id="system_submit">
+
+    </form>
+</div>
+
+<script>
+    // 登录注册切换
+    $(function(){
+    $('#register').click(function(){
+        console.log("test2");
+        $('#system_submit').load('./pages/register.html');
+        $('#register').css({
+            backgroundColor:'rgb(0, 46, 73)',
+            borderTopRightRadius: '40px',
+            transition:'all 1s'
+
+        })
+        $('#log').css({
+            backgroundColor:'rgb(67, 130, 167)',
+            borderTopLeftRadius: '40px',
+            transition:'all 1s'
+
+        })
+    });
+    $('#log').click(function(){
+        console.log("test3")
+        $('#system_submit').load('./pages/log.html');
+        $('#log').css({
+            backgroundColor:'rgb(0, 46, 73)',
+            borderTopLeftRadius: '40px',
+            transition:'all 1s'
+
+        })
+        $('#register').css({
+            backgroundColor:'rgb(67, 130, 167)',
+            borderTopRightRadius: '40px',
+            transition:'all 1s'
+
+        })
+    });
+    $('#log').click();
+    })
+</script>

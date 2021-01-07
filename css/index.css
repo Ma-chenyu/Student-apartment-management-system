@@ -1,0 +1,953 @@
+/* 侧边栏 
+   侧边栏 -> 左浮动
+   无序列表在 restart.css 中初始化（抽离样式模块）
+   动态添加样式在 index.js 
+--------------------------------------------------*/
+.title{
+    display: inline-block;
+    height: auto;
+    width: 100%;
+    background-color: rgb(0, 41, 68);
+    color: #fff;
+    text-align: center;
+    padding: 20px 0px;
+    font-size: 30px;
+}
+.left_nav{
+    float: left;
+    width: 230px;
+    height: 100%;
+    background-color: rgb(1, 70, 116);
+    overflow: hidden;
+
+    max-width: 400px;
+}
+.left_ul{
+    width: 100%;
+    height: auto;
+}
+.left_li{
+    height: 80px;
+    width: 100%;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    transition: all 0.8s;
+}
+
+.left_title{
+    width: 100px;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+}
+.left_li:hover{
+    background-color: rgb(0, 54, 90);
+    cursor: pointer;
+}
+
+/* 展示区
+   栅格布局 10*10
+   背景自画 工具：Adobe Illustrator CC 2018
+                Adobe Photoshop CC 2018 
+    动态获取标题功能在 index.js 5~8行
+-------------------------------------------------- */
+.content{
+    width: calc(100% - 230px);
+    height: 100%;
+    position: absolute;
+    right: 0;
+    background: url('../img/background/background.jpg');
+    background-size: auto 100%;
+    display: grid;
+    grid-template-columns: repeat(10,10%);
+    grid-template-rows: repeat(10,10%);
+    max-width: 2200px;
+    min-width: calc(100% - 230px);
+    overflow: hidden;
+}
+.content_div{
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-row-end: 2;
+    grid-column-end: 11;
+    background-color: rgba(0, 0, 0, 0.363);
+    box-shadow:0px 5px 10px #45737a;
+    border-radius: 30px;
+    margin: 15px 10px;
+    display: flex;
+    align-items: center;
+}
+/* 头像 */
+.user_icon{
+    height: 38px;
+    width: 38px;
+    position: absolute;
+    right: 5%;
+    background: url('../img/background/user-test.jpg');
+    background-size: auto 100%;
+    background-position: center;
+    border-radius: 50%;
+    margin-top: 2px;
+}
+.user_icon:hover{
+    cursor: pointer;
+}
+#content_title{
+    position: relative;
+    left: 2%;
+    color: #fff;
+    text-shadow: 0px 2px 5px rgb(110, 110, 110);
+}
+/* 功能区 -------------------------------------------*/
+.content_display{
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-row-end: 11;
+    grid-column-end: 11;
+    width: auto;
+    height: auto;
+    /* background-color: #0a565c54; */
+    border-radius: 30px;
+    margin: 10px 20px;
+}
+
+/* 页面 home 
+   栅格布局 设置settimeout依次添加动画效果
+
+   （此处注意，JavaScript是单线程 settimeout属于微异步任务
+   故在结尾处 *i 使其依次执行）
+--------------------------------------*/
+.home_ul{
+    width: auto;
+    height: 100%;
+    /* background-color: #ccc; */
+    display: grid;
+    grid-template-columns: repeat(10,10%);
+    grid-template-rows: repeat(10,10%);
+}
+.home_main{
+    height: 100%;
+    width: 100%;
+}
+.home_li_one{
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-row-end: 4;
+    grid-column-end: 3;
+    background-color: rgb(255, 162, 149);
+}
+.home_li_two{
+    grid-row-start: 1;
+    grid-column-start: 3;
+    grid-row-end: 5;
+    grid-column-end: 7;
+    background-color: rgb(209, 255, 182);
+}
+.home_li_three{
+    grid-row-start: 1;
+    grid-column-start: 7;
+    grid-row-end: 4;
+    grid-column-end: 11;
+    background-color: rgb(175, 236, 255);
+}
+.home_li_four{
+    grid-row-start: 4;
+    grid-column-start: 1;
+    grid-row-end: 8;
+    grid-column-end: 3;
+    background-color: rgb(224, 191, 255);
+}
+.home_li_five{
+    grid-row-start: 5;
+    grid-column-start: 3;
+    grid-row-end: 8;
+    grid-column-end: 7;
+    background-color: rgb(253, 252, 188);
+}
+.home_li_six{
+    grid-row-start: 4;
+    grid-column-start: 7;
+    grid-row-end: 8;
+    grid-column-end: 11;
+    background-color: rgb(194, 210, 255);
+}
+.home_li_seven{
+    grid-row-start: 8;
+    grid-column-start: 1;
+    grid-row-end: 11;
+    grid-column-end: 6;
+    background-color: rgb(180, 255, 226);
+}
+.home_li_eight{
+    grid-row-start: 8;
+    grid-column-start: 6;
+    grid-row-end: 11;
+    grid-column-end: 11;
+    background-color: rgb(168, 184, 255);
+}
+.home_li{
+    border-radius: 30px;
+    transition: all 0.8s;
+    margin: 10px;
+    opacity: 0;
+}
+.home_li:hover{
+    cursor: pointer;
+    transform: scale(1.06);
+}
+.home_div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.home_span{
+    color: #000;
+    padding: 20px 10px;
+    text-align: center;
+}
+/* 动画效果 */
+.up{
+    animation: home 1s;
+    opacity: 1 !important;
+}
+@keyframes home{
+    0%{
+        opacity: 0;
+        transform: translateY(20px);
+
+    }
+    40%{
+        transform: translateY(8px);
+
+    }
+    80%{
+        transform: translateY(0px);
+
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 系统管理界面 system
+    登录、注册界面
+    学生不需要 授权码、管理员需要 授权码
+----------------------------------------------- */
+.system_div{
+    height: 100%;
+    width: 100%;
+    border-radius: 30px;
+    display: grid;
+    grid-template-columns: repeat(10,10%);
+    grid-template-rows: repeat(10,10%);
+}
+.system_change{
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-row-end: 2;
+    grid-column-end: 11;
+    background-color: rgb(67, 130, 167);
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.log,.register{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 20px;
+}
+.line{
+    height: 46px;
+    width: 2px;
+    background-color: #fff;
+}
+.log,.register:hover{
+    cursor: pointer;
+}
+.system_submit{
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-row-end: 10;
+    grid-column-end: 11;
+
+    background-color: rgba(228, 240, 255, 0.884);
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+/* 登录 */
+.log_div{
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input_div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+.check_user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+}
+.check_user>label{
+    padding: 0px 30px;
+    font-size: 20px;
+    color: rgb(131, 131, 131);
+    margin-right: 50px;
+}
+.check_user>label:hover,
+.check_user:hover{
+    cursor: pointer;
+}
+.log_icon{
+    width: 30px;
+    height: 30px;
+    display: inline;
+    margin: 0px 20px;
+}
+.log_input{
+    margin: 20px 0px;
+    background-color: #00000000;
+    border-bottom: 1px solid #000;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 2px;
+    outline: none;
+}
+.user_name{
+    width: 400px;
+    height: 50px;
+}
+.password{
+    width: 400px;
+    height: 50px;
+}
+.system_btn{
+    width: 250px;
+    height: 30px;
+    border-radius: 30px;
+    margin-top: 20px;
+    background-color: #002e49;
+    color: #fff;
+    font-size: 16px;
+}
+.system_btn:hover{
+    cursor: pointer;
+}
+/* 注册 */
+.register_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.register_input_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.register_radio{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.register_radio>label:hover{
+    cursor: pointer;
+}
+
+
+/* 公寓管理 apartment
+    四个子界面采用 栅格布局
+    点击其中一个展开
+    jquery添加CSS样式
+----------------------------------------------- */
+.apartment_div{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+    grid-template-rows: repeat(2,50%); 
+    transition: all 1s;
+}
+.apartment_function{
+    border-radius: 40px;
+    margin: 10px;
+    transition: all 0.8s;
+    opacity: 0;
+}
+.apartment_li_div{
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(10,10%);
+    grid-template-rows: repeat(10,10%);
+
+    transition: all 1s ;
+}
+/* 图标 */
+.apartment_icon{
+    width: 25px;
+    height: 25px;
+    grid-row-start: 1;
+    grid-column-start: 10;
+    grid-row-end: 1;
+    grid-column-end: 11;
+    margin-top: 10px;
+    transition: all 0.8s;
+    }
+.apartment_icon:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.apartment_back{
+    width: 25px;
+    height: 25px;
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-row-end: 1;
+    grid-column-end: 1;
+    margin: 10px 0px 0px 20px;
+    transition: all 0.8s;
+
+    display: none;
+}
+.apartment_back:hover{
+    cursor: pointer;
+}
+.apartment_one{
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-row-end: 1;
+    grid-column-end: 1;
+    background-color: rgb(255, 179, 179,0.85);
+}
+.apartment_two{
+    grid-row-start: 1;
+    grid-column-start: 2;
+    grid-row-end: 1;
+    grid-column-end: 2;
+    background-color: rgb(176, 255, 216,0.85);
+}
+.apartment_three{
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-row-end: 2;
+    grid-column-end: 1;
+    background-color: rgb(122, 179, 255,0.85);
+}
+.apartment_four{
+    grid-row-start: 2;
+    grid-column-start: 2;
+    grid-row-end: 2;
+    grid-column-end: 2;
+    background-color: rgb(239, 175, 255,0.85);
+
+ 
+}
+.apartment_span{
+    grid-row-start: 5;
+    grid-column-start: 5;
+    grid-row-end: 7;
+    grid-column-end: 7;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.show{
+    opacity: 1 !important;
+}
+
+/* 具体功能 */
+/* 寝室分配 -------------*/
+.function_one{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: #ccc; */
+    visibility: hidden;
+    border-radius: 40px;
+}
+.function_one_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+}
+.function_one_check{
+    width: 200px;
+    height: 30px;
+    outline: none;
+    background-color: #00000000;
+    border: none;
+    border-bottom: 1px solid #000;
+    font-size: 17px;
+}
+.function_one_input{
+    width: 200px;
+    height: 30px;
+    outline: none;
+
+}
+.function_submit{
+    width: 200px;
+    height: 30px;
+    background-color: rgba(94, 2, 2, 0.836);
+    color: #fff;
+    border-radius: 30px;
+    /* transition:all 0.8s; */
+}
+.function_submit:hover{
+    cursor: pointer;
+}
+.function_one_num{
+    width:30px;
+    height:30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 55%;
+
+    /* background-color: #ccc; */
+}
+
+
+/*  学生管理  -------------*/
+.function_two{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    visibility: hidden;
+}
+.function_two_check{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.function_two_check{
+    margin: 20px;
+}
+.function_submit_two{
+    background-color: rgb(11, 94, 0);
+    margin-top: 30px;
+}
+.function_two_display{
+    height: 80%;
+    width: 60%;
+    background-color: #64b19e;
+    box-shadow: 5px 5px 10px #004e3488;
+    border-radius: 40px;
+    display: grid;
+    grid-template-columns: repeat(4,25%);
+    grid-template-rows: repeat(8,12.5%);
+
+    visibility: hidden;
+}
+.function_two_show{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.function_two_show>span{
+    color: #fff;
+}
+.shut_down{
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    margin: 20px;
+    transition: none;
+}
+.shut_down:hover{
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: all 0.3s;
+}
+.function_two_show_one{
+    grid-row-start: 2;
+    grid-row-end: 8;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    background-color: #ccc;
+    margin: 20px;
+    border-radius: 40px;
+}
+.function_two_show_two{
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 3;
+    grid-column-end: 6;
+}
+.function_two_show_three{
+    grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column-start: 3;
+    grid-column-end: 6;
+}
+.function_two_show_four{
+    grid-row-start: 5;
+    grid-row-end: 6;
+    grid-column-start: 3;
+    grid-column-end: 6;
+}
+.function_two_show_five{
+    grid-row-start: 6;
+    grid-row-end: 7;
+    grid-column-start: 3;
+    grid-column-end: 6;
+}
+.function_two_display_input{
+    color: #fff;
+    background-color: rgba(196, 255, 228, 0);
+    outline: none;
+    padding: 2px;
+    font-size: 15px;
+}
+/* 财产管理 -------------*/
+.function_three{
+height: 80%;
+width: 80%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+visibility: hidden;
+}
+.function_three_input{
+width: 200px;
+height: 30px;
+background-color: #00000000;
+border-bottom: 1px solid #000;
+outline: none;
+font-size: 17px;
+}
+.function_three_goods{
+width: 200px;
+height: 30px;
+border: none;
+background-color: #00000000;
+border-bottom: 1px solid #000;
+outline: none;
+font-size: 17px;
+}
+.function_submit_three{
+background-color: #4a6686;
+position: relative;
+top: 40px;
+}
+
+
+/* 出入登记 -------------*/
+/* 竖线 */
+.y_line{
+width: 2px;
+height: 330px;
+background-color: #725d7c;
+position: relative;
+right: 30px;
+border: 2px;
+}
+.function_four{
+width: 100%;
+height: 80%;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+
+visibility: hidden;
+}
+
+/* 货物进出 */
+.function_four_input{
+width: 200px;
+height: 30px;
+outline: none;
+margin: 20px 20px 0px 10px; 
+border: none;
+border-bottom: 1px solid #000;
+font-size: 16px;
+background-color: #00000000;
+}
+.function_four_first{
+width: 50%;
+height: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+.function_four_first>div{
+position: relative;
+top: 30px;
+}
+.goods{
+width: 200px;
+height: 30px;
+outline: none;
+background-color: #00000000;
+border: none;
+border-bottom: 1px solid #000;
+font-size: 16px;
+margin: 20px;
+}
+
+/* 人员进出 */
+.function_four_second{
+width: 50%;
+height: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+margin-top: 50px;
+}
+.function_four_input_two{
+width: 200px;
+height: 20px;
+background-color: #00000000;
+outline: none;
+border: none;
+border-bottom: 1px solid #000;
+font-size: 17px;
+}
+/* 按键 */
+.function_submit_four{
+grid-row-start: 10;
+grid-row-end: 11;
+grid-column-start: 5;
+grid-column-end: 7;
+text-align: center;
+background-color: #846a97ab;
+position: relative;
+right: 30px;
+
+visibility: hidden;
+
+}
+
+/* 学生功能 
+   标题区
+   三个标题（查看信息、同宿人员、校园风光）
+   导航原理同左侧边栏导航    
+---------------------------------------------- */
+.user_div{
+    height: 100%;
+    width: 100%;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: row;
+}
+.user_nav{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.user_mine,
+.user_dormitory,
+.user_scenery{
+    width: 100%;
+    height: 100%;
+    background-color: #014674;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    transition: all 0.8s;
+    margin: 1px 0px;
+}
+.user_mine:hover,
+.user_dormitory:hover,
+.user_scenery:hover{
+    cursor: pointer;
+}
+.user_mine>span,
+.user_dormitory>span,
+.user_scenery>span{
+    /* color: #fff; */
+    font-size: 20px;
+    font-weight: 700;
+}
+.user_mine{
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+.user_scenery{
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+.user_display{
+    width: 80%;
+    height: 100%;
+    border-radius: 40px;
+    /* background-color: rgb(0, 48, 87); */
+    margin: 0px 10px;
+}
+
+/* 功能区 ---------------------------------------------- */
+/* 查看信息 */
+.userpage_div{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.24);
+    border-radius: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.user_input_div{
+    width: 100%;
+    height: 40px;
+    margin: 20px 0px;
+    /* background-color: #ccc; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.user_input_div>span{
+    height: 40px;
+    width: auto;
+    margin-top: 20px;
+}
+.userpageone_input{
+    width: 300px;
+    height: 40px;
+    outline: none;
+    background-color: #00000000;
+    /* border-bottom: 1px solid #000; */
+    line-height: 2;
+    margin-left: 20px;
+    font-size: 20px;
+}
+/* 同寝人员 */
+.userpagetwo_div{
+    width: 95%;
+    height: 95%;
+    display: grid;
+    row-gap: 10px;
+    column-gap: 10px;
+    grid-template-columns: repeat(3,33%);
+    grid-template-rows: repeat(2,49%);
+    /* background-color: #fff; */
+    padding: 10px;
+}
+.admin{
+    border-radius: 40px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+}
+/* 头像 */
+.user_image{
+    width: 150px;
+    height: 210px;
+    background-color: #ccc;
+    margin: 10px;
+}
+/* 信息框 */
+.userpagetwo_input{
+    background-color: #cccccc00;
+    /* border-bottom: 1px solid #000; */
+    outline: none;
+}
+.user_one{
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 1;
+    grid-column-end: 1;
+
+    background-color: rgba(167, 230, 255,0.6);
+}
+.user_two{
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 2;
+    grid-column-end: 2;
+
+    background-color: rgba(147, 190, 255, 0.6);
+
+}
+.user_three{
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 3;
+    grid-column-end: 3;
+
+    background-color: rgba(91, 167, 255, 0.568);
+
+
+}
+
+.user_four{
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 1;
+
+    background-color: rgba(106, 165, 255, 0.473);
+
+
+}
+
+.user_five{
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 2;
+
+    background-color: rgba(0, 98, 179, 0.541);
+
+
+}
+
+.user_six{
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 3;
+    grid-column-end: 3;
+
+    background-color: rgba(0, 62, 121, 0.342);
+
+}

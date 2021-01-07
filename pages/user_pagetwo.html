@@ -1,0 +1,89 @@
+<div class="userpagetwo_div ">
+    <!-- 一号床     -->
+    <div class="admin user_one">
+        <div class="user_image"></div>
+        <div style="display: flex;flex-direction: row;">
+            <span>姓名：</span>
+            <input type="text" placeholder="用户名" readonly class="userpagetwo_input">
+        </div>
+        <div style="display: flex;flex-direction: row;">
+            <span>学号：</span>
+            <input type="text" placeholder="10位学号" readonly class="userpagetwo_input">
+        </div>
+    </div>
+    <!-- 二号床 -->
+    <div class="admin user_two">
+        <div class="user_image"></div>
+        <div style="display: flex;flex-direction: row;">
+            <span>姓名：</span>
+            <input type="text" placeholder="用户名" readonly class="userpagetwo_input">
+        </div>
+        <div style="display: flex;flex-direction: row;">
+            <span>学号：</span>
+            <input type="text" placeholder="10位学号" readonly class="userpagetwo_input">
+        </div>
+    </div>
+    <!-- 三号床 -->
+    <div class="admin user_three">
+        <div class="user_image"></div>
+        <div style="display: flex;flex-direction: row;">
+            <span>姓名：</span>
+            <input type="text" placeholder="用户名" readonly class="userpagetwo_input">
+        </div>
+        <div style="display: flex;flex-direction: row;">
+            <span>学号：</span>
+            <input type="text" placeholder="10位学号" readonly class="userpagetwo_input">
+        </div>
+    </div>
+    <!-- 四号床 -->
+    <div class="admin user_four">
+        <div class="user_image"></div>
+        <div style="display: flex;flex-direction: row;">
+            <span>姓名：</span>
+            <input type="text" placeholder="用户名" readonly class="userpagetwo_input">
+        </div>
+        <div style="display: flex;flex-direction: row;">
+            <span>学号：</span>
+            <input type="text" placeholder="10位学号" readonly class="userpagetwo_input">
+        </div>
+    </div>
+    <!-- 五号床 -->
+    <div class="admin user_five">
+        <div class="user_image"></div>
+        <div style="display: flex;flex-direction: row;">
+            <span>姓名：</span>
+            <input type="text" placeholder="用户名" readonly class="userpagetwo_input">
+        </div>
+        <div style="display: flex;flex-direction: row;">
+            <span>学号：</span>
+            <input type="text" placeholder="10位学号" readonly class="userpagetwo_input">
+        </div>
+    </div>
+    <!-- 六号床 -->
+    <div class="admin user_six">
+        <div class="user_image"></div>
+        <div style="display: flex;flex-direction: row;">
+            <span>姓名：</span>
+            <input type="text" placeholder="用户名" readonly class="userpagetwo_input">
+        </div>
+        <div style="display: flex;flex-direction: row;">
+            <span>学号：</span>
+            <input type="text" placeholder="10位学号" readonly class="userpagetwo_input">
+        </div>
+    </div>
+</div>
+
+<script>
+     $(function(){
+        // 获取长度
+        let admin = $('.admin');
+        // console.log(home_li.length);
+        $.each(admin,function(i){
+            let that = $(this);
+            setTimeout(function(){
+                // that.css('backgroundColor','#000')
+                that.addClass('up')
+            },120*i)
+        })
+    })
+</script>
